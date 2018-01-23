@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <springProfile name="dev">
+        <appender name="rollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <File>./tmp/tadalin.log</File>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>./tmp/tadalin.%d{yyyy-MM-dd}.log</FileNamePattern>
+                <maxHistory>3000</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <Pattern>%d{YYYY-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</Pattern>
+                <!--<pattern>${CONSOLE_LOG_PATTERN}</pattern>-->
+            </encoder>
+        </appender>
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="rollingFileAppender" />
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <appender name="rollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <File>./tmp/tadalin.log</File>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>./tmp/tadalin.%d{yyyy-MM-dd}.log</FileNamePattern>
+                <maxHistory>3000</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <Pattern>99 %d{YYYY-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</Pattern>
+                <!--<pattern>${CONSOLE_LOG_PATTERN}</pattern>-->
+            </encoder>
+        </appender>
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="rollingFileAppender" />
+        </root>
+    </springProfile>
+</configuration>

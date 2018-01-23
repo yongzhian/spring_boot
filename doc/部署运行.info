@@ -1,0 +1,5 @@
+
+1、jar包方式运行
+ mvn package
+java -jar  springboot.jar
+即可访问 http://localhost:8080/my/cn
