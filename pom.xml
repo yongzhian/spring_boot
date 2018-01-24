@@ -54,7 +54,14 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-        <!--配置jersey  jax-rs 全程 Java API for RESTful Services-->
+        <!--配置apache cxf ，jax-ws框架 -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-spring-boot-starter-jaxws</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+
+        <!--配置jersey  jax-rs 全名 Java API for RESTful Services-->
         <!--<dependency>-->
         <!--<groupId>org.springframework.boot</groupId>-->
         <!--<artifactId>spring-boot-starter-jersey</artifactId>-->

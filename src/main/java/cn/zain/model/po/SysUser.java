@@ -10,6 +10,8 @@ public class SysUser {
     private Long id;
     private String username;
     private String password;
+    private String remark;
+    private String isValid;
 
     public SysUser() {
     }
@@ -41,5 +43,21 @@ public class SysUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getIsValid() {
+        return isValid;
+    }
+
+    public void setIsValid(String isValid) {
+        this.isValid = isValid;
     }
 }

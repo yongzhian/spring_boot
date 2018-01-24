@@ -28,6 +28,12 @@ public class SysUserMapperTest {
     }
 
     @Test
+    public void getByIdTest() throws Exception {
+        final SysUser sysUser = sysUserMapper.getById(6L);
+        logger.info("sysUser:{}",sysUser);
+    }
+
+    @Test
     public void insertAllTest() throws Exception {
         List<SysUser> list = new ArrayList<>();
         list.add(new SysUser("a", "b"));

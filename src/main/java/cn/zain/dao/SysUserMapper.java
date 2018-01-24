@@ -18,7 +18,8 @@ public interface SysUserMapper {
     @Select("select * from sys_user")
     @Results({
             @Result(property = "username", column = "username"),
-            @Result(property = "password", column = "password")
+            @Result(property = "password", column = "password"),
+            @Result(property = "isValid", column = "is_valid")
     })
     List<SysUser> getAll();
 
@@ -31,7 +32,8 @@ public interface SysUserMapper {
     @Select("select * from sys_user where id=#{id}")
     @Results({
             @Result(property = "username", column = "username"),
-            @Result(property = "password", column = "password")
+            @Result(property = "password", column = "password"),
+            @Result(property = "isValid", column = "is_valid")
     })
     SysUser getById(Long id);
 

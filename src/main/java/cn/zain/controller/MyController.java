@@ -1,6 +1,5 @@
 package cn.zain.controller;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Copyright (c) 2016 www.yongzhian.cn. All Rights Reserved.
+ * Copyright (c) 2018 www.yongzhian.cn. All Rights Reserved.
  */
 
 /**
@@ -22,9 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/my")
 @Controller
 public class MyController {
+
     @RequestMapping("/hello")
     @ResponseBody
-    @Bean
     String home() {
         return "hello world";
     }
