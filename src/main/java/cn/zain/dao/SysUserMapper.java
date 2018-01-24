@@ -41,15 +41,18 @@ public interface SysUserMapper {
      * @param sysUser
      * @return
      */
-    @Insert("insert into sys_user() values(O)")
+    @Insert("INSERT INTO SYS_USER(username,password) values(#{username},#{password})")
     @Options(useGeneratedKeys = true)
     int insert(SysUser sysUser);
 
     /**
      * 功能说明：批量添加用户
+     * 通过SQL工厂类及对应的方法生产SQL语句,根据不同的需求生产出不同的SQL，适用性更好。
+     * insertAll方法参数必须Map<String,Object> para
      * @param sysUserList
      * @return
      */
     @InsertProvider(type = SysUserMapperProvider.class, method = "insertAll")
-    int insert(List<SysUser> sysUserList);
+    @Options(useGeneratedKeys = true)
+    int insertAll(List<SysUser> sysUserList);
 }
