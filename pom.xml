@@ -20,10 +20,10 @@
 
     <dependencies>
         <!--添加web应用依赖-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-web</artifactId>-->
+        <!--</dependency>-->
 
         <!--使用Thymeleaf模板引擎进行模板渲染 jsp使用时不能添加-->
         <dependency>

@@ -18,20 +18,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @return
  * @params
  */
-@RequestMapping("/my")
+@RequestMapping("/api")
 @Controller
-public class MyController {
+public class ApiController {
 
-    @RequestMapping("/hello")
+    @RequestMapping("/hello.do")
     @ResponseBody
     String home() {
-        return "hello world";
-    }
-
-    @RequestMapping("/cn")
-    @ResponseBody
-    String guess() {
-        return "中文测试";
+        return "hello world!,我是SpringBoot";
     }
 
     /**
@@ -45,7 +39,7 @@ public class MyController {
     @RequestMapping(value = "/users/{username}", method = RequestMethod.GET)
     @ResponseBody
     public String userProfile(@PathVariable("username") String username) {
-        return String.format("user %s", username);
+        return String.format("返回 user %s", username);
     }
 
     /**
@@ -58,7 +52,6 @@ public class MyController {
     @RequestMapping("/model/{name}")
     public String hello(@PathVariable("name") String name, Model model) {
         model.addAttribute("name", name);
-        return "hello";
+        return "demo";
     }
-
 }

@@ -1,16 +1,12 @@
 package cn.zain;
 
-import cn.zain.listener.ApplicationStartEventListener;
-import cn.zain.listener.ApplicationStopEventListener;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
-import org.springframework.boot.context.config.ConfigFileApplicationListener;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
-import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
-import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.context.annotation.Bean;
@@ -18,14 +14,11 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.http.HttpStatus;
 
 import javax.annotation.PreDestroy;
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.nio.charset.Charset;
 
 /**
  * Copyright (c) 2018 www.yongzhian.cn. All Rights Reserved.
- *
+ * ws包提供webservice服务
+ * controller包提供api和页面跳转服务
  * @author Zain
  */
 
@@ -33,16 +26,18 @@ import java.nio.charset.Charset;
 @EnableConfigurationProperties
 @ImportResource(locations = {"classpath:config/application-bean.xml"})
 public class Application {
-    private static Logger logger = Logger.getLogger(Application.class);
+    private static Logger logger = LoggerFactory.getLogger(Application.class);
 
     @Autowired
     private ServerProperties serverProperties;
+
     /**
      * 启动类，基于注解可添加监听等
+     *
      * @param args
      */
     public static void main(String[] args) {
-        SpringApplication.run(Application.class,args);
+        SpringApplication.run(Application.class, args);
     }
 
     /**

@@ -38,6 +38,20 @@ public interface SysUserMapper {
     SysUser getById(Long id);
 
     /**
+     * 功能说明：根据username查询用户
+     *
+     * @param username
+     * @return
+     */
+    @Select("select * from sys_user where username=#{username}")
+    @Results({
+            @Result(property = "username", column = "username"),
+            @Result(property = "password", column = "password"),
+            @Result(property = "isValid", column = "is_valid")
+    })
+    SysUser getByUsername(String username);
+
+    /**
      * 功能说明：添加用户
      *
      * @param sysUser
@@ -51,6 +65,7 @@ public interface SysUserMapper {
      * 功能说明：批量添加用户
      * 通过SQL工厂类及对应的方法生产SQL语句,根据不同的需求生产出不同的SQL，适用性更好。
      * insertAll方法参数必须Map<String,Object> para
+     *
      * @param sysUserList
      * @return
      */
