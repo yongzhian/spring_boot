@@ -1,0 +1,97 @@
+记录操作记录
+
+1、按照mysql
+  wget http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+ 修改密码进入mysql:
+  SET PASSWORD = PASSWORD('passwd4root~');
+  ALTER USER 'root'@'localhost' PASSWORD EXPIRE NEVER;
+  update user set  Host='%' where User='root'; //允许远程访问
+  flush privileges;
+
+2、添加mysql端口
+
+  sudo firewall-cmd --permanent --zone=public --add-port=3306/tcp
+  sudo firewall-cmd --reload
+  sudo firewall-cmd --zone=public --list-all
+
+3 安装jdk yum -y install java-1.8.0-openjdk*
+
+4、安装Sonar
+  sudo firewall-cmd --permanent --zone=public --add-port=9000/tcp
+  sudo firewall-cmd --reload
+   /home/zain/soft/sonarqube-6.4/bin/linux-x86-64/sonar.sh status
+
+
+5、添加activeMQ口
+ /usr/local/soft/apache-activemq-5.15.0/bin/activemq start
+
+  sudo firewall-cmd --permanent --zone=public --add-port=8161/tcp
+  sudo firewall-cmd --reload
+  sudo firewall-cmd --zone=public --list-all
+
+
+  sudo firewall-cmd --permanent --zone=public --add-port=61616/tcp //打开端口
+  sudo firewall-cmd --reload
+  sudo firewall-cmd --zone=public --list-all
+
+6、安装tomcat
+  /home/zain/soft/apache-tomcat-7.0.79 port 8081
+mv soft/taokeeper-monitor/ soft/apache-tomcat-8.5.16/webapps/
+
+
+7、安装zookeeper
+   wget http://www.apache.org/dist/zookeeper/zookeeper-3.5.2-alpha/zookeeper-3.5.2-alpha.tar.gz
+  /home/zain/soft/zookeeper-3.5.2-alpha
+  bin/zkServer.sh start
+  sudo firewall-cmd --permanent --zone=public --add-port=2181/tcp
+  sudo firewall-cmd --reload
+  sudo firewall-cmd --zone=public --list-all
+
+  开通集群端口2888和3888
+   ./soft/zookeeper-3.5.2-alpha/bin/zkServer.sh start
+8、基于springBoot的jar部署 端口 9081
+
+9、安装nginx
+   sudo  yum install nginx
+/var/log/nginx/error.log
+
+----------------------------------------------------------------
+1、添加activeMQ口
+ /usr/local/soft/apache-activemq-5.15.0/bin/activemq start
+
+  sudo firewall-cmd --permanent --zone=public --add-port=8161/tcp
+  sudo firewall-cmd --reload
+  sudo firewall-cmd --zone=public --list-all
+
+
+  sudo firewall-cmd --permanent --zone=public --add-port=61616/tcp //打开端口
+  sudo firewall-cmd --reload
+  sudo firewall-cmd --zone=public --list-all
+2、、安装zookeeper
+   wget http://www.apache.org/dist/zookeeper/zookeeper-3.5.2-alpha/zookeeper-3.5.2-alpha.tar.gz
+  /home/zain/soft/zookeeper-3.5.2-alpha
+  bin/zkServer.sh start
+
+   sudo firewall-cmd --permanent --zone=public --add-port=2181/tcp
+  sudo firewall-cmd --reload
+  sudo firewall-cmd --zone=public --list-all
+
+  server.1=192.168.21.104:2888:3888
+server.2=192.168.21.182:2888:3888
+server.3=192.168.21.182:2889:3889
+会占用8080端口
+3、安装wildfly /home/zain/soft/wildfly-11.0.0.Final
+ 启动 /home/zain/soft/wildfly-11.0.0.Final/bin//standalone.sh
+sudo firewall-cmd --permanent --zone=public --add-port=9080/tcp
+ sudo firewall-cmd --permanent --zone=public --add-port=9009/tcp //打开端口
+ sudo firewall-cmd --permanent --zone=public --add-port=9080/tcp
+ sudo firewall-cmd --permanent --zone=public --add-port=9443/tcp
+sudo firewall-cmd --permanent --zone=public --add-port=9990/tcp
+  sudo firewall-cmd --reload
+  sudo firewall-cmd --zone=public --list-all
+
+4、安裝redis
+  yum install gcc
+sudo firewall-cmd --permanent --zone=public --add-port=6379/tcp
+ cd /home/zain/soft/redis-4.0.6
+redis-server redis.conf &
