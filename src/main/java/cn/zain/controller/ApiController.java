@@ -20,11 +20,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @RequestMapping("/api")
 @Controller
-public class ApiController {
+public class ApiController extends AbstractController {
 
     @RequestMapping("/hello.do")
     @ResponseBody
-    String home() {
+    String hello() {
+        logger.info("hello...");
         return "hello world!,我是SpringBoot";
     }
 
@@ -39,6 +40,7 @@ public class ApiController {
     @RequestMapping(value = "/users/{username}", method = RequestMethod.GET)
     @ResponseBody
     public String userProfile(@PathVariable("username") String username) {
+        logger.info("userProfile...");
         return String.format("返回 user %s", username);
     }
 
@@ -50,8 +52,10 @@ public class ApiController {
      * @params
      */
     @RequestMapping("/model/{name}")
-    public String hello(@PathVariable("name") String name, Model model) {
+    public String model(@PathVariable("name") String name, Model model) {
+        logger.info("model...");
         model.addAttribute("name", name);
+        model.addAttribute("price", 952);
         return "demo";
     }
 }

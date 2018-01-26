@@ -1,5 +1,7 @@
 package cn.zain.model.po;
 
+import java.util.List;
+
 /**
  * Copyright (c) 2018 www.yongzhian.cn. All Rights Reserved.
  *
@@ -12,6 +14,8 @@ public class SysUser {
     private String password;
     private String remark;
     private String isValid;
+
+    private List<SysRole> sysRoles;
 
     public SysUser() {
     }
@@ -59,5 +63,13 @@ public class SysUser {
 
     public void setIsValid(String isValid) {
         this.isValid = isValid;
+    }
+
+    public List<SysRole> getSysRoles() {
+        return sysRoles;
+    }
+
+    public void setSysRoles(List<SysRole> sysRoles) {
+        this.sysRoles = sysRoles;
     }
 }

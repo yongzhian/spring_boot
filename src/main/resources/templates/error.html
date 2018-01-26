@@ -4,8 +4,15 @@
     <title>Error</title>
 
     <style th:inline="text">
-        ::selection { background-color: #E13300; color: white; }
-        ::-moz-selection { background-color: #E13300; color: white; }
+        ::selection {
+            background-color: #E13300;
+            color: white;
+        }
+
+        ::-moz-selection {
+            background-color: #E13300;
+            color: white;
+        }
 
         body {
             background-color: #fff;
@@ -55,9 +62,20 @@
 </head>
 <body>
 
+
 <div id="container">
-    <h1> Error: (type=<span th:text="eee"></span>, status=<span th:text="状态"></span>).</h1>
-    <p th:text="ddd">Fake content</p>
+    <h1> 12 Error: (type=<span th:text="eee"></span>, status=<span th:text="状态"></span>).</h1>
+    <p th:text="${status}">Fake content</p>
+</div>
+
+<div>
+    <h1> 原始信息：
+        timestamp: <p th:text="${timestamp}">此处不显示</p>
+        status: <p th:text="${status}">此处不显示</p>
+        error: <p th:text="${error}">此处不显示</p>
+        message: <p th:text="${message}">此处不显示</p>
+        path: <p th:text="${path}">此处不显示</p>
+    </h1>
 </div>
 
 </body>

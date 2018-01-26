@@ -12,4 +12,12 @@ public interface SysUserService {
      * @return
      */
     SysUser getSysUser(Long userId);
+
+    /**
+     * 功能说明：根据username查询用户
+     *
+     * @param username
+     * @return
+     */
+    SysUser getByUsername(String username);
 }

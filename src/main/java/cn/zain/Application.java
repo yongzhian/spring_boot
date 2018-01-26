@@ -51,8 +51,8 @@ public class Application {
         return container -> {
             container.addErrorPages(new ErrorPage(HttpStatus.BAD_REQUEST, "/400.html"), //resources/static 目录下
                     new ErrorPage(HttpStatus.NOT_FOUND, "/404.html"),
-                    new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500.html"),
-                    new ErrorPage("/error.html")
+                    new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500.html")
+//                    ,new ErrorPage("/error.html") //默认位置
             );
         };
     }

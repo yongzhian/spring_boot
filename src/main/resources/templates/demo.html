@@ -3,11 +3,30 @@
 <head>
     <meta charset="UTF-8"/>
     <title>demo</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet"  href="../../../css/main-static.css"  th:href="@{/css/bootstrap.min.css}"/>
+    <script th:href="@{http://code.jquery.com/jquery-2.0.3.min.js}"/>
 </head>
 <body>
-<p th:text="'Hello！, ' + ${name} + '!'" >3333</p>
-
 这是DEMO
+<p th:text="'Hello！, ' + ${name} + '!'">此处不显示</p>
+<dd th:text="${'$'+price}">235</dd>
+
+<tbody th:remove="all-but-first">
+        <tr>
+            <td>White table</td>
+            <td>$200</td>
+            <td>15-Jul-2013</td>
+        </tr>
+        <tr>
+            <td>Reb table</td>
+            <td>$200</td>
+            <td>15-Jul-2013</td>
+        </tr>
+        <tr>
+            <td>Blue table</td>
+            <td>$200</td>
+            <td>15-Jul-2013</td>
+        </tr>
+</tbody>
 </body>
 </html>
