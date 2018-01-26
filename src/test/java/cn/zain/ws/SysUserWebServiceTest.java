@@ -1,16 +1,13 @@
 package cn.zain.ws;
 
 import cn.zain.model.po.SysUser;
-import com.sun.xml.internal.ws.client.sei.ResponseBuilder;
 import org.apache.cxf.binding.soap.SoapMessage;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.headers.Header;
 import org.apache.cxf.helpers.DOMUtils;
 import org.apache.cxf.interceptor.Fault;
-import org.apache.cxf.interceptor.Interceptor;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
-import org.apache.cxf.message.Message;
 import org.apache.cxf.phase.AbstractPhaseInterceptor;
 import org.apache.cxf.phase.Phase;
 import org.junit.Test;
@@ -54,8 +51,7 @@ public class SysUserWebServiceTest {
     }
 
     private class ClientLoginInterceptor extends AbstractPhaseInterceptor<SoapMessage> {
-        public ClientLoginInterceptor(String username, String password)
-        {
+        public ClientLoginInterceptor(String username, String password) {
             super(Phase.PREPARE_SEND);
             this.username = username;
             this.password = password;
@@ -95,7 +91,7 @@ public class SysUserWebServiceTest {
             auth.appendChild(username);
             auth.appendChild(password);
 
-            headers.add(0, new Header(new QName("tiamaes"),auth));
+            headers.add(0, new Header(new QName("tiamaes"), auth));
         }
     }
 }

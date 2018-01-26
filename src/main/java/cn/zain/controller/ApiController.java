@@ -1,11 +1,19 @@
 package cn.zain.controller;
 
+import cn.zain.config.SysConstants;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Copyright (c) 2018 www.yongzhian.cn. All Rights Reserved.
@@ -22,11 +30,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ApiController extends AbstractController {
 
+    @Autowired
+    private SysConstants sysConstants;
+
     @RequestMapping("/hello.do")
     @ResponseBody
     String hello() {
         logger.info("hello...");
         return "hello world!,我是SpringBoot";
+    }
+
+    @RequestMapping("/getSession")
+    @ResponseBody
+    Map<String,Object> getSession() throws UnknownHostException {
+        logger.info("getSession...");
+        Map<String,Object> attributeMap = new HashMap<>(2);
+        final String sessionId = request.getSession().getId();
+        attributeMap.put("sessionId",sessionId);
+        attributeMap.put("address",InetAddress.getLocalHost().getHostAddress());
+        attributeMap.put("port",sysConstants.getServerPort());
+        attributeMap.put("message",request.getRequestURI());
+        return attributeMap;
     }
 
     /**
