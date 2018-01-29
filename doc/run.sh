@@ -70,15 +70,22 @@ case "$1" in
       echo "killed $id"
     done
     ;;
-
   restart)
     $0 stop
     sleep 1
     $0 start
     ;;
-
-  *)
-    echo "Usage: run.sh {start|stop|restart} xx.jar"
+  status)
+    PROCESS_ID=`ps -ef | grep java | grep ${jar_name} | awk {'print $2'}`
+    # -z 是空
+    if [ -n "$PROCESS_ID"  ]; then
+        echo -e "${jar_file} running！PROCESS_ID:${PROCESS_ID}"
+    else
+        echo -e "${jar_file} Stopped！"
+    fi
+    ;;
+    *)
+    echo "Usage: run.sh {start|stop|restart|status} xx.jar"
     ;;
 
 esac
