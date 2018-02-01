@@ -4,6 +4,7 @@ import cn.zain.model.po.SysUser;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Zain
@@ -36,6 +37,15 @@ public interface SysUserMapper {
             @Result(property = "isValid", column = "is_valid")
     })
     SysUser getById(Long id);
+
+    /**
+     * 功能说明：根据ID查询用户到MAP中
+     *
+     * @param id
+     * @return
+     */
+    @Select("select id,username,create_time from sys_user where id=#{id}")
+    Map<String,Object> getInMapById(Long id);
 
     /**
      * 功能说明：根据username查询用户

@@ -34,6 +34,12 @@ public class SysUserMapperTest {
     }
 
     @Test
+    public void getInMapByIdTest() throws Exception {
+        final Map<String, Object> inMapById = sysUserMapper.getInMapById(6L);
+        logger.info("inMapById:{}",inMapById);
+    }
+
+    @Test
     public void insertAllTest() throws Exception {
         List<SysUser> list = new ArrayList<>();
         list.add(new SysUser("a", "b"));
